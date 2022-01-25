@@ -1,0 +1,116 @@
+## 构建
+
+### 1. 添加eslint & typescript 
+
+```
+npm install -D eslint typescript 
+Tips: 推荐使用eslint 7版本, 8版本与webstorm有兼容性问题 
+```
+
+### 2. 添加解析器 & 规则 
+
+```
+解析器
+npm install -D @typescript-eslint/parser 
+规则插件
+npm install -D @typescript-eslint/eslint-plugin
+
+demo:
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["plugin:@typescript-eslint/recommended"] // 使用推荐的规则
+  "rules": {
+    "@typescript-eslint/rule-name": "error" // 自定义的typescript规则
+  }
+}
+ 
+```
+
+### 3. 添加husky & lint-staged 
+
+```
+npm install -D husky@4.3.5
+npm install -D lint-staged
+
+demo: 
+"lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ],
+    "src/**/*.{scss,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+
+```
+
+### 4. 添加prettier 以及 prettier
+
+```
+npm install -D prettier 
+npm install -D eslint-plugin-prettier eslint-config-prettier
+
+然后只需要在extends添加即可，这样，eslint & prettier的规则就可以同时使用了
+
+{
+  "extends": ["plugin:prettier/recommended"]
+}
+
+```
+
+
+### 5. 添加eslint-plugin-react (对tsx的支持)
+```
+npm install -D eslint-plugin-react
+
+"extends": [
+    "plugin:react/recommended"
+  ]
+```
+
+
+### 6. 配置打包webpack 
+
+```
+webpack保持在5的最新版本进行开发
+
+"webpack": "^5.67.0",
+"webpack-cli": "^4.9.2",
+"webpack-dev-server": "^4.7.3",
+"webpack-merge": "^5.8.0"
+
+"url-loader": "^4.1.1",
+"file-loader": "^6.2.0",
+"css-loader": "^6.5.1",
+"ts-loader": "^9.2.6",
+"style-loader": "^3.3.1",
+"sass-loader": "^10.1.1",
+"react-hot-loader": "^4.8.0",
+
+"mini-css-extract-plugin": "^2.5.2",
+"html-webpack-plugin": "^5.5.0",
+
+```
+
+### 最后别忘了安装一些可供调用的类 & Interface 
+
+```
+"@types/jest": "^27.4.0",
+"@types/koa": "^2.13.4",
+"@types/koa-router": "^7.4.4",
+"@types/node": "^16.11.20",
+"@types/react": "^17.0.38",
+"@types/react-dom": "^17.0.11",
+```
+
+> 推荐的Node版本是v14.18.3  npm v6.14.15
+
