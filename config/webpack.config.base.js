@@ -21,23 +21,9 @@ module.exports = {
   module: {
     rules: [
       {
-        oneOf: [
-          {
-            test: /\.(png|gif|jpg|jpeg|svg|woff|ttf|eot)$/,
-            resourceQuery: /\?.*/,
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-          {
-            test: /\.(png|gif|jpg|jpeg|svg|woff|ttf|eot)$/,
-            loader: 'file-loader',
-            options: {
-              name: '[name][hash:21].[ext]',
-            },
-          },
-        ],
+        test: /\.(png|gif|jpg|jpeg|svg|woff|ttf|eot)$/i,
+        type: 'asset',
+        exclude: [path.resolve('src/svg')],
       },
       {
         test: /\.tsx?$/,
@@ -46,15 +32,50 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]',
+              },
+            },
+          },
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]',
+              },
+            },
+          },
+          'postcss-loader',
+        ],
       },
       {
         test: /\.less$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]',
+              },
+            },
+          },
+          'postcss-loader',
+          'less-loader',
+        ],
       },
     ],
   },
