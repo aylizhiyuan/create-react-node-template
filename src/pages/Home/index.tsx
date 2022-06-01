@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { FC } from 'react'
 import list from './list.json'
 import { Button } from 'antd'
-import './index.scss'
+import styles from './index.scss'
 
-export default function Home() {
+const Home: FC = () => {
   return (
     <div>
-      <Button>btn的点点滴滴</Button>
+      <div className={styles.container}>测试大小</div>
     </div>
   )
 }
