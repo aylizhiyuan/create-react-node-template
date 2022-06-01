@@ -1,0 +1,96 @@
+@mixin hairline-common() {
+  content: '';
+  position: absolute;
+  transform-origin: center;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+@mixin hairline-base($color) {
+  @include hairline-common();
+
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  border: 0 solid $color;
+  transform: scale(0.5);
+}
+
+// raduis 2倍
+@mixin hairline-surround($color, $raduis: 0) {
+  position: relative;
+  border-radius: $raduis;
+
+  &::after {
+    @include hairline-base($color);
+    border-radius: $raduis;
+    border-width: 1px;
+  }
+}
+
+@mixin hairline-bottom($color) {
+  position: relative;
+
+  &::after {
+    @include hairline-common();
+
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scaleY(0.5);
+    border-bottom: 1px solid $color;
+  }
+}
+
+@mixin hairline-top($color) {
+  position: relative;
+
+  &::before {
+    @include hairline-common();
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    transform: scaleY(0.5);
+    border-top: 1px solid $color;
+  }
+}
+
+@mixin hairline-left($color) {
+  position: relative;
+
+  &::after {
+    @include hairline-common();
+
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    transform: scaleX(0.5);
+    border-left: 1px solid $color;
+  }
+}
+
+@mixin hairline-right($color) {
+  position: relative;
+
+  &::after {
+    @include hairline-common();
+
+    top: $top;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    transform: scaleX(0.5);
+    border-right: 1px solid $color;
+  }
+}
+
+@mixin hairline-clean() {
+  &::after {
+    border-bottom: none;
+  }
+}

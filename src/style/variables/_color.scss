@@ -1,0 +1,58 @@
+/**
+ * 主色
+ * @primary-color         主色
+ * @light-primary-color   亮主色
+ * @dark-primary-color    暗主色
+*/
+$primary-color: #caa678;
+$tint-primary-color: #222b57;
+$light-primary-color: #343655;
+$dark-primary-color: #565a99;
+$sub-primary-color: #7f5621;
+// 缩写
+$pc: $primary-color;
+$tpc: $tint-primary-color;
+$lpc: $light-primary-color;
+$dpc: $dark-primary-color;
+$spc: $sub-primary-color;
+
+/**
+ * 背景色
+ *
+*/
+$background-prd-color: #f1f5fb;
+$background-gray-color: #f6f6f6;
+$background-cyan-color: #f3f8ff;
+// 缩写
+$bgpc: $background-prd-color;
+$bggc: $background-gray-color;
+$bgcc: $background-cyan-color;
+
+/**
+ * 文本/边框/背景色
+*/
+
+$red: #d94b40;
+$green: #19b872;
+$gold: #a57b44;
+$blue: #449bff;
+$gainsboro: #7f8eab;
+$white: #ffffff;
+$black: #333333;
+$dark: #363539;
+
+$grey-1-color: #aaaaaa;
+$grey-4-color: #d4d4d4;
+$grey-5-color: #f5f5f5;
+$grey-6-color: #666666;
+$grey-7-color: #f7f7f7;
+$grey-8-color: #888888;
+$grey-9-color: #999999;
+
+$g1c: $grey-1-color;
+$g4c: $grey-4-color;
+$g5c: $grey-5-color;
+$g6c: $grey-6-color;
+$g7c: $grey-7-color;
+$g8c: $grey-8-color;
+$g9c: $grey-9-color;

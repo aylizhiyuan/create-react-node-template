@@ -1,0 +1,11 @@
+$bold: var(--bold, 500);
+$semibold: var(--semibold, 600);
+@mixin bold() {
+  font-family: PingFangSC-Medium;
+  font-weight: $bold;
+}
+
+@mixin semiBold() {
+  font-family: PingFangSC-Semibold;
+  font-weight: $semibold;
+}
