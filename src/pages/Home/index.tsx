@@ -1,14 +1,31 @@
-import React, { FC } from 'react'
-import list from './list.json'
-import { Button } from 'antd'
-import styles from './index.scss'
-
-const Home: FC = () => {
-  return (
-    <div>
-      <div className={styles.container}>测试大小</div>
-    </div>
-  )
+import React from 'react'
+import backtrack from '@/utils/backtrack'
+class Home extends React.Component {
+  render() {
+    const goToPage = (page: any) => {
+      backtrack.pushPage()
+      window.location.replace(page)
+    }
+    const myBack = () => {
+      backtrack.configureBackButton()
+    }
+    return (
+      <div>
+        <a id="universal_back_button" href="" onClick={() => myBack()}>
+          后退
+        </a>
+        <br />
+        <a onClick={() => goToPage('/a')}>去a页面</a>
+        <br />
+        <a onClick={() => goToPage('/b')}>去b页面</a>
+        <br />
+        <a onClick={() => goToPage('/c')}>去C页面</a>
+        <br />
+        <a onClick={() => goToPage('/d')}>去D页面</a>
+        <br />
+      </div>
+    )
+  }
 }
 
 export default Home
