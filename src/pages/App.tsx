@@ -5,6 +5,7 @@ import A from '@/pages/A'
 import B from '@/pages/B'
 import C from '@/pages/C'
 import D from '@/pages/D'
+import Form from '@/pages/form'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/b" element={<B />} />
         <Route path="/c" element={<C />} />
         <Route path="/d" element={<D />} />
+        <Route path="/form" element={<Form />} />
       </Routes>
     </BrowserRouter>
   )
