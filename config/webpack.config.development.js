@@ -21,6 +21,10 @@ module.exports = merge(baseConfig, {
     chunkFilename: '[name].js',
   },
   devServer: {
+    allowedHosts: 'all',
+    client: {
+      webSocketURL: 'ws://localhost:9080/ws',
+    },
     historyApiFallback: true, // 在使用单页面的项目中,最终都会转向请求根目录
     hot: true,
     devMiddleware: {
