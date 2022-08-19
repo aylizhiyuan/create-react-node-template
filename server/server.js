@@ -3,7 +3,7 @@ const Router = require('koa-router')
 const path = require('path')
 const static = require('koa-static')
 const nunjucks = require('koa-nunjucks-2')
-const bodyParser = require('koa-bodyParser')
+const bodyParser = require('koa-bodyparser')
 const config = require('./lib/config.js')
 const app = new Koa()
 const isDev = app.env === 'development'
