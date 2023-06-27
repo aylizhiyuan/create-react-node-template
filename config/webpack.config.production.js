@@ -4,13 +4,15 @@ const root = path.join(__dirname, '../')
 const baseConfig = require('./webpack.config.base')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const pkgJSON = require('../package.json')
-const commonPublicPath = `//s1.wacdn.com/finance/`
-const publicPath = `${commonPublicPath}${pkgJSON.name}/`
+// 生产环境中可考虑将静态代码上传到cdn中使用，在执行compile的时候将静态文件发布即可
+// const commonPublicPath = `//s1.wacdn.com/finance/`
+// const publicPath = `${commonPublicPath}${pkgJSON.name}/`
 module.exports = merge(baseConfig, {
   mode: 'production',
   output: {
     path: path.join(root, 'build'),
-    publicPath: publicPath,
+    // 目前的做法是直接引用本地的文件即可
+    // publicPath: publicPath,
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 21,

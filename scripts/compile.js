@@ -113,8 +113,8 @@ Promise.resolve()
   })
   .then(() => {
     console.log('move views template')
-
-    // 移动模版文件
+    // 移动模版文件，将打包生成的build中的html文件移动到server/views中
+    // 这样，启动的时候直接使用后端路由
     const templates = glob.sync('**/*.html', {
       cwd: buildPath,
     })
@@ -129,29 +129,31 @@ Promise.resolve()
     })
   })
   .then(async () => {
-    // 非测试及生成环境
-    if (['test', 'production'].indexOf(env) === -1) {
-      return Promise.resolve()
-    }
-
-    console.log('publishing static assets...')
-
-    // 发布静态资源
-    let ret = await deploy({
-      env: env,
-      cwd: buildPath,
-      imagemin: true,
-      path: assetsPath,
-      files: '!(dll.*)',
-    }).catch((err) => {
-      console.log(err)
-    })
-
-    if (ret.code !== 0) {
-      return Promise.reject(ret)
-    }
-    console.log('publish success')
-    console.log(JSON.stringify(ret, null, 4))
+    // 直接略过发布cdn的过程
+    return Promise.resolve()
+    // // 非测试及生成环境
+    // if (['test', 'production'].indexOf(env) === -1) {
+    //   return Promise.resolve()
+    // }
+    //
+    // console.log('publishing static assets...')
+    //
+    // // 发布静态资源
+    // let ret = await deploy({
+    //   env: env,
+    //   cwd: buildPath,
+    //   imagemin: true,
+    //   path: assetsPath,
+    //   files: '!(dll.*)',
+    // }).catch((err) => {
+    //   console.log(err)
+    // })
+    //
+    // if (ret.code !== 0) {
+    //   return Promise.reject(ret)
+    // }
+    // console.log('publish success')
+    // console.log(JSON.stringify(ret, null, 4))
   })
   .then(() => {
     const time = (Date.now() - startTime) / 1000

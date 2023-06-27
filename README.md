@@ -7,7 +7,7 @@ npm install -D eslint typescript
 Tips: 推荐使用eslint 7版本, 8版本与webstorm有兼容性问题 
 ```
 
-### 2. 添加解析器 & 规则 
+### 2. 添加解析器 & 规则  
 
 ```
 解析器
