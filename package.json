@@ -1,5 +1,5 @@
 {
-  "name": "afp-mobile",
+  "name": "myProduct",
   "version": "0.1.0",
   "private": true,
   "target": "web",
@@ -31,10 +31,10 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development npm run server & npm run dev",
     "dev": "nodemon -w config -w scripts scripts/server.js",
-    "compile": "node scripts/compile.js",
-    "deploy": "node scripts/deploy.js",
     "server": "nodemon -e js,json,yaml -w config -w server -x node server/server.js",
     "build": "cross-env NODE_ENV=production npm run compile",
+    "compile": "node scripts/compile.js",
+    "deploy": "cross-env NODE_ENV=production node scripts/deploy.js",
     "lint": "eslint --ext .ts,.tsx src --fix",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.scss\""
   },

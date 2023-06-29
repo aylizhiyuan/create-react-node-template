@@ -5,6 +5,7 @@ console.log('start deploying...')
 const startTime = Date.now()
 const env = process.env.NODE_ENV || 'development'
 const pkgName = process.env.npm_package_name
+console.log('查看我的内容', process.env.npm_package_name, env)
 
 const deploy = async () => {
   // Catching an error
