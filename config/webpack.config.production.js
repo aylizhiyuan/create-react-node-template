@@ -1,6 +1,8 @@
 const { merge } = require('webpack-merge')
 const path = require('path')
 const root = path.join(__dirname, '../')
+const ip = require('dev-ip')
+const devIp = ip()[0] || 'localhost'
 const baseConfig = require('./webpack.config.base')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const pkgJSON = require('../package.json')
@@ -12,7 +14,7 @@ module.exports = merge(baseConfig, {
   output: {
     path: path.join(root, 'build'),
     // 目前的做法是直接引用本地的文件即可
-    // publicPath: publicPath,
+    publicPath: `http://${devIp}:8080`,
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     hashDigestLength: 21,

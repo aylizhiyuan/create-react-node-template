@@ -1,11 +1,1 @@
-{
-  "apps": [
-    {
-      "name": "myProduct",
-      "script": "./server/server.js",
-      "env": {
-        "NODE_ENV": "production"
-      }
-    }
-  ]
-}
+{"apps":[{"name":"myProduct-production","script":"server/server.js","exec_mode":"cluster","instances":4}]}

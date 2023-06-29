@@ -10,7 +10,7 @@ const isDev = app.env === 'development'
 const port = config.server.port || 8080
 const router = require('./lib/router')
 app.use(bodyParser())
-app.use(static(path.join(__dirname, './static')))
+app.use(static(path.join(__dirname, './views')))
 app.use(
   nunjucks({
     ext: 'html',

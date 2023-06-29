@@ -115,14 +115,13 @@ Promise.resolve()
     console.log('move views template')
     // 移动模版文件，将打包生成的build中的html文件移动到server/views中
     // 这样，启动的时候直接使用后端路由
-    const templates = glob.sync('**/*.html', {
+    const templates = glob.sync('**/*', {
       cwd: buildPath,
     })
 
     return Promise.map(templates, (template) => {
       const srcPath = path.join(buildPath, template)
       const distPath = path.join(viewsPath, template)
-
       return fs.moveAsync(srcPath, distPath, {
         clobber: true,
       })
