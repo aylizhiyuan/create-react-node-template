@@ -113,8 +113,7 @@ Promise.resolve()
   })
   .then(() => {
     console.log('move views template')
-    // 移动模版文件，将打包生成的build中的html文件移动到server/views中
-    // 这样，启动的时候直接使用后端路由
+    // build文件全部移动到views中
     const templates = glob.sync('**/*', {
       cwd: buildPath,
     })
